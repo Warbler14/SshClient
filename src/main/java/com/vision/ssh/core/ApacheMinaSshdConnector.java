@@ -73,8 +73,6 @@ public class ApacheMinaSshdConnector extends SshdConnector{
 						
 						constantTest(channel, responseStream, errorResponseStream, pipedIn);
 						
-						
-//						channel.waitFor(EnumSet.of(ClientChannelEvent.CLOSED), 0L);
 //						channel.waitFor(EnumSet.of(ClientChannelEvent.CLOSED), TimeUnit.SECONDS.toMillis(30));
 					}
 				} catch (Exception e) {
@@ -127,26 +125,5 @@ public class ApacheMinaSshdConnector extends SshdConnector{
 		System.out.println(responseMessage);
 		responseStream.reset();		
 	}
-	
-//	private static class MessageThread extends Thread {
-//		
-//		private ByteArrayOutputStream responseStream;
-//		private ByteArrayOutputStream errorResponseStream;
-//		private OutputStream pipedIn;
-//		
-//		
-//		public MessageThread(ByteArrayOutputStream responseStream, ByteArrayOutputStream errorResponseStream, OutputStream pipedIn) {
-//			super();
-//			this.responseStream = responseStream;
-//			this.errorResponseStream = errorResponseStream;
-//			this.pipedIn = pipedIn;
-//		}
-//
-//
-//		@Override
-//		public void run() {
-//			System.out.println(">>");
-//		}
-//	}
 	
 }
