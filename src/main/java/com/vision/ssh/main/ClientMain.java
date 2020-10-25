@@ -44,13 +44,17 @@ public class ClientMain {
 		sshClientInformation.setUsername((String)propertiesManager.get("client.username"));
 		sshClientInformation.setPassword((String)propertiesManager.get("client.password"));
 		
-		String publicKey = (String)propertiesManager.get("key.public");
+//		String publicKey = (String)propertiesManager.get("key.public");
+//		
+//		if(publicKey == null || publicKey.length() <=0) {
+//			String keyPairAlgorithm = sshClientInformation.getKeyPairAlgorithm();
+//			KeyPair keyPair = ApacheMinaSshdConnector.getKeyPair(keyPairAlgorithm);
+//			sshClientInformation.setKeyPair(keyPair);
+//		}
 		
-		if(publicKey == null || publicKey.length() <=0) {
-			String keyPairAlgorithm = sshClientInformation.getKeyPairAlgorithm();
-			KeyPair keyPair = ApacheMinaSshdConnector.getKeyPair(keyPairAlgorithm);
-			sshClientInformation.setKeyPair(keyPair);
-		}
+//		String keyPairAlgorithm = sshClientInformation.getKeyPairAlgorithm();
+		KeyPair keyPair = ApacheMinaSshdConnector.getKeyPair("EdDSA");
+		sshClientInformation.setKeyPair(keyPair);
 		
 		sshClientInformation.setHost((String)propertiesManager.get("server.host"));
 		sshClientInformation.setPort(Integer.valueOf((String)propertiesManager.get("server.port")));
