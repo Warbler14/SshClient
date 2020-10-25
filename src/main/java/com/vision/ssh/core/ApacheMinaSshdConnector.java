@@ -57,7 +57,7 @@ public class ApacheMinaSshdConnector extends SshdConnector{
 				SessionContext sessionContext = channel.getSessionContext();
 				System.out.println("ClientVersion : " + sessionContext.getClientVersion());
 				System.out.println("ServerVersion : " + sessionContext.getServerVersion());
-				
+				printKeyPair(sshClientInformation.getKeyPair());
 				
 				//test
 				if (channel instanceof ChannelShell) {
@@ -118,7 +118,7 @@ public class ApacheMinaSshdConnector extends SshdConnector{
 
 		// 채널 종료까지 기다리는건 시간이 많이 소모됨
 //		channel.waitFor(EnumSet.of(ClientChannelEvent.CLOSED), TimeUnit.SECONDS.toMillis(defaultTimeoutSeconds));
-		returnWait(responseStream);
+		returnWait(responseStream, 200);
 
 		printStream(responseStream);
 		String responseMessage = new String(responseStream.toByteArray());
